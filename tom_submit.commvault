@@ -1,0 +1,53 @@
+#!/bin/ksh 
+
+. $TOM_ADMIN/vtom_init.ksh
+
+# ----------------------------------------------------- #
+# 		    TOM SUBMITTER        		#
+# ----------------------------------------------------- #
+
+if  [ -n ${TOM_JOB_ID:-0} ] ; then
+	# Informations display
+	. $TOM_ADMIN/tom_submit.aff
+	echo "_______________________________________________________________________"
+	date +"%A %d/%m/%Y - %H:%M:%S"
+	echo "Begin of the script..."
+	echo "_______________________________________________________________________"
+	echo " "
+
+	# TEST mode
+	if [ "${TOM_JOB_EXEC}" = "TEST" ] ; then
+		echo "Job in TEST mode"
+		${ABM_BIN}/tsend -sT -r0 -m"Job finished (TEST mode)"
+		${ABM_BIN}/vtgestlog
+		exit 0
+	fi
+
+    python3 ${ABM_BIN}/vtom-commvault_backup-jobs.py --host $1 --client $2 --backup-set $3 --port $4 --use-ssl $5 --subclient $6 --username $7 --password $8 --config-file $9 --check-interval ${10} --timeout ${11} --verbose ${12}
+    stat_fin_job=$?
+
+	echo "_______________________________________________________________________"
+	date +"%A %d/%m/%Y - %H:%M:%S"
+	echo "End of the script."
+	echo " "
+
+	# Management of the return code 
+	if [ "${stat_fin_job}" = "0" ] ; then
+		echo "--> Exit [${stat_fin_job}] then acknowledgment"
+		${ABM_BIN}/tsend -sT -r${stat_fin_job} -m"Job finished (${stat_fin_job})"
+		${ABM_BIN}/vtgestlog
+	else
+		echo "--> Exit [${stat_fin_job}] then no acknowledgment"
+		${ABM_BIN}/tsend -sE -r${stat_fin_job} -m"Job in error (${stat_fin_job})"
+		${ABM_BIN}/vtgestlog
+	fi
+
+	# logs file  management
+    [ "${TOM_LOG_ACTION}" != "   " ] && ${TOM_ADMIN}/gestlog
+	
+	exit ${stat_fin_job}
+else 
+	echo " "
+	echo "--> Job not submitted by a Visual TOM engine"
+	echo " "
+fi

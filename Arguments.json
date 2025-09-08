@@ -1,0 +1,93 @@
+{
+    "arguments": [
+      {
+        "name": "host",
+        "description": "CommVault server hostname or IP address",
+        "type": "string",
+        "key": "--host",
+        "required": true
+      },
+      {
+        "name": "client",
+        "description": "Client name to backup",
+        "type": "string", 
+        "key": "--client",
+        "required": true
+      },
+      {
+        "name": "backup-set",
+        "description": "Backup set name",
+        "type": "string",
+        "key": "--backup-set", 
+        "required": true
+      },
+      {
+        "name": "port",
+        "description": "CommVault server port",
+        "type": "integer",
+        "key": "--port",
+        "required": false,
+        "default": 8400
+      },
+      {
+        "name": "use-ssl",
+        "description": "Use SSL/TLS connection",
+        "type": "flag",
+        "key": "--use-ssl",
+        "required": false,
+        "default": true
+      },
+      {
+        "name": "subclient",
+        "description": "Subclient name (optional)",
+        "type": "string",
+        "key": "--subclient",
+        "required": false
+      },
+      {
+        "name": "username",
+        "description": "CommVault username",
+        "type": "string",
+        "key": "--username",
+        "required": false
+      },
+      {
+        "name": "password",
+        "description": "CommVault password",
+        "type": "string",
+        "key": "--password",
+        "required": false
+      },
+      {
+        "name": "config-file",
+        "description": "Configuration file path for authentication",
+        "type": "string",
+        "key": "--config-file",
+        "required": false
+      },
+      {
+        "name": "check-interval",
+        "description": "Status check interval in seconds",
+        "type": "integer",
+        "key": "--check-interval",
+        "required": false,
+        "default": 30
+      },
+      {
+        "name": "timeout",
+        "description": "Maximum wait time in seconds",
+        "type": "integer",
+        "key": "--timeout",
+        "required": false,
+        "default": 3600
+      },
+      {
+        "name": "verbose",
+        "description": "Enable verbose logging",
+        "type": "flag",
+        "key": "--verbose",
+        "required": false,
+        "default": false
+      }
+    ]
+  }

@@ -1,0 +1,6 @@
+# Example CommVault authentication configuration file
+# Copy this file to auth.conf and update with your credentials
+
+[Authentication]
+username = your_commvault_username
+password = your_commvault_password 
