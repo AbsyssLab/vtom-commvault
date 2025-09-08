@@ -1,4 +1,17 @@
-# Project Name
+# CommVault Backup Controller
+
+A Python script for integrating with CommVault to launch and monitor backup operations.
+
+## Description
+
+This script provides a command-line interface to interact with CommVault backup systems. It allows you to:
+
+- Launch backup jobs for specific clients and backup sets
+- Monitor job execution in real-time
+- Generate detailed execution reports
+- Handle authentication through multiple methods
+- Return specific exit codes for different error conditions
+  
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE.md)&nbsp;
 [![fr](https://img.shields.io/badge/lang-fr-yellow.svg)](README-fr.md)  
 
@@ -12,7 +25,9 @@ Consultings days can be requested to help for the implementation.
 # Prerequisites
 
   * Visual TOM 7.1.2 or greater
-  * xxx
+  * Python 3.7+
+  *  requests>=2.25.1
+  *  typing-extensions>=3.7.4
 
 # Instructions
 
