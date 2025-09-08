@@ -1,7 +1,7 @@
 # Intégration CommVault avec Visual TOM
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE.md)&nbsp;
 [![fr](https://img.shields.io/badge/lang-fr-yellow.svg)](README-fr.md)  
-Ce projet permet l'intégration des opérations de sauvegarde CommVault avec le planificateur Visual TOM.
+Ce projet permet l'intégration des opérations de sauvegarde CommVault avec avec l'ordonnanceur Visual TOM.
 
 L'intégration fournit une solution complète pour lancer et surveiller les travaux de sauvegarde CommVault via Visual TOM, supportant les environnements Windows et Linux.
 
