@@ -109,7 +109,7 @@ python commvault_backup.py --host commvault.company.com --client "SERVER01" --ba
 python commvault_backup.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet" --verbose
 ```
 
-### Exécution via file d'attente Visual TOM
+### Exécution via queue batch Visual TOM
 
 #### Windows
 ```batch
