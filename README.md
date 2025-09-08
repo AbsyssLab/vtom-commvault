@@ -36,7 +36,7 @@ Consulting days can be requested to help for the implementation.
    ```bash
    pip install -r requirements.txt
    ```
-3. Import the application model (`commvault_modele.xml`) into Visual TOM
+3. Import the application model (`VTOM_CommvaultJob.xml`) into Visual TOM
 4. Configure authentication (see Authentication section below)
 
 ## Authentication
@@ -45,14 +45,14 @@ The integration supports multiple authentication methods:
 
 ### Method 1: Command Line Arguments
 ```bash
-python commvault_backup.py --host commvault.company.com --username admin --password secret --client "SERVER01" --backup-set "DefaultBackupSet"
+python vtom-commvault_backup-jobs.py --host commvault.company.com --username admin --password secret --client "SERVER01" --backup-set "DefaultBackupSet"
 ```
 
 ### Method 2: Environment Variables
 ```bash
 export COMMVAULT_USERNAME=admin
 export COMMVAULT_PASSWORD=secret
-python commvault_backup.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet"
+python vtom-commvault_backup-jobs.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet"
 ```
 
 ### Method 3: Configuration File
@@ -65,7 +65,7 @@ password = your_commvault_password
 
 Then use:
 ```bash
-python commvault_backup.py --host commvault.company.com --config-file auth.conf --client "SERVER01" --backup-set "DefaultBackupSet"
+python vtom-commvault_backup-jobs.py --host commvault.company.com --config-file auth.conf --client "SERVER01" --backup-set "DefaultBackupSet"
 ```
 
 ## Usage Guidelines
@@ -97,16 +97,16 @@ The application model should be imported into Visual TOM. The Visual TOM job mus
 
 ```bash
 # Basic backup with authentication prompt
-python commvault_backup.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet"
+python vtom-commvault_backup-jobs.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet"
 
 # Backup with specific subclient
-python commvault_backup.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet" --subclient "Database"
+python vtom-commvault_backup-jobs.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet" --subclient "Database"
 
 # Backup with custom monitoring settings
-python commvault_backup.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet" --check-interval 60 --timeout 7200
+python vtom-commvault_backup-jobs.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet" --check-interval 60 --timeout 7200
 
 # Verbose logging
-python commvault_backup.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet" --verbose
+python vtom-commvault_backup-jobs.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet" --verbose
 ```
 
 ### Visual TOM Queue Execution
@@ -177,7 +177,7 @@ The integration provides comprehensive monitoring capabilities:
 
 Enable verbose logging for detailed troubleshooting:
 ```bash
-python commvault_backup.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet" --verbose
+python vtom-commvault_backup-jobs.py --host commvault.company.com --client "SERVER01" --backup-set "DefaultBackupSet" --verbose
 ```
 
 ## License
