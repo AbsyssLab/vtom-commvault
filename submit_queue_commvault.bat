@@ -1,23 +1,23 @@
 @echo OFF
 
-rem Force l'utilisation West European Latin
+rem Forces the use of West European Latin
 chcp 1252 > nul
 
-rem Inclut le repertoire binaire powershell dans le path
+rem Include the PowerShell binary directory in the PATH
 set PATH_PYTHON=C:\Users\Jdoe\AppData\Local\Programs\Python\Python311\
 set PATH=%PATH_PYTHON%;%PATH%
 
 call submit_aff.bat %*
 echo _______________________________________________________________________
-echo Debut de l'execution ...
+echo Start of execution ...
 date /T
 echo %time:~+0,8%
 echo _______________________________________________________________________
 
-rem Mode TEST
+rem Test Mode
 if "%TOM_JOB_EXEC%" == "TEST" (
-	echo Job execute en mode TEST
-	%ABM_BIN%\tsend -sT -r0 -m"Traitement termine (mode TEST)"
+	echo Job execute in Test mode
+	%ABM_BIN%\tsend -sT -r0 -m"Job finished (TEST mode)"
 	%ABM_BIN%\vtgestlog
 	goto FIN
 )
@@ -28,30 +28,30 @@ rem :LAUNCH
 echo %PATH_PYTHON%\python %ABM_BIN%\vtom-commvault_backup-jobs.py --host %1 --client %2 --backup-set %3 --port %4 --use-ssl %5 --subclient %6 --username %7 --password %8 --config-file %9 --check-interval %10 --timeout %11 --verbose %12
 %PATH_PYTHON%\python %ABM_BIN%\vtom-commvault_backup-jobs.py --host %1 --client %2 --backup-set %3 --port %4 --use-ssl %5 --subclient %6 --username %7 --password %8 --config-file %9 --check-interval %10 --timeout %11 --verbose %12
 set RETCODE=%ERRORLEVEL%
-if %RETCODE% equ 0 goto TERMINE
-goto ERREUR
+if %RETCODE% equ 0 goto FINISHED
+goto ERROR
 
-:ERREUR
-%ABM_BIN%\tsend -sE -r%RETCODE% -m"Traitement en erreur (%RETCODE%)"
+:ERROR
+%ABM_BIN%\tsend -sE -r%RETCODE% -m"Job in error (%RETCODE%)"
 %ABM_BIN%\vtgestlog
 echo _______________________________________________________________________
-echo Fin d'execution
+echo End of execution
 date /T
 echo %time:~+0,8%
-echo Exit [%RETCODE%] donc pas d'acquittement
+echo Exit [%RETCODE%] No acknowledgment
 echo _______________________________________________________________________
 if not "%TOM_LOG_ACTION%"=="   " call Gestlog_wnt.bat
 exit %RETCODE%
 
-:TERMINE
-%ABM_BIN%\tsend -sT -r%RETCODE% -m"Traitement termine (%RETCODE%)"
+:FINISHED
+%ABM_BIN%\tsend -sT -r%RETCODE% -m"Job finished (%RETCODE%)"
 %ABM_BIN%\vtgestlog
 echo _______________________________________________________________________
-echo Fin d'execution
+echo End of execution
 date /T
 echo %time:~+0,8%
-echo Exit [%RETCODE%] donc acquittement
+echo Exit [%RETCODE%] Acknowledgement
 if not "%TOM_LOG_ACTION%"=="   " call Gestlog_wnt.bat
 exit %RETCODE%
 
-:FIN
+:END
