@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Domain name="PRO-DEV" stamp="VTEXPORT : 7.2.1d FR NT64 2025/07/24 Visual Tom (c) Absyss" version="7.2.1d" generationDate="Thu Jul 24 2025">
+<Domain name="ABSYSS" stamp="VTEXPORT : 7.2.1d FR NT64 2025/07/24 Visual Tom (c) Absyss" version="7.2.1d" generationDate="Thu Jul 24 2025">
 	<Queues>
 		<Queue name="queue_commvault" comment="" />
 	</Queues>
